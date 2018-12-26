@@ -81,7 +81,7 @@ public class Combustiveis extends AppCompatActivity implements View.OnClickListe
     }
 
     public void carregarValoresCombustiveis() {
-        gasolina.setText(String.valueOf(sharedPref.getFloat("val_gasolina", 0.0f)));
+        gasolina.setText(String.valueOf(sharedPref.getFloat("val_gasolina", val_gasolina)));
         alcool.setText(String.valueOf(sharedPref.getFloat("val_alcool", val_alcool)));
         diesel.setText(String.valueOf(sharedPref.getFloat("val_diesel", val_diesel)));
         gnv.setText(String.valueOf(sharedPref.getFloat("val_gnv", val_gnv)));

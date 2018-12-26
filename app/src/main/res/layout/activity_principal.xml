@@ -130,11 +130,20 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/t_ajuda_custo"
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Total para a Ajuda de Custo"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/m_ajuda_custo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
     </LinearLayout>
