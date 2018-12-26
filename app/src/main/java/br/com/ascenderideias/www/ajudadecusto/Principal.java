@@ -1,5 +1,6 @@
 package br.com.ascenderideias.www.ajudadecusto;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,7 @@ public class Principal extends AppCompatActivity {
     EditText autonomia;
     float ajuda_custo;
 
-    EditText m_ajuda_custo;
+    TextView m_ajuda_custo;
 
     public SharedPreferences sharedPref;
 
@@ -43,20 +44,20 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
 
         setTitle("Ajuda de Custo");
-        sharedPref = getPreferences(this.MODE_PRIVATE);
+        sharedPref = getPreferences(MODE_PRIVATE);
 
-        origem = findViewById(R.id.get_cidorigem);
-        destino = findViewById(R.id.get_ciddestino);
-        distancia = findViewById(R.id.get_distkm);
+        origem = findViewById(R.id.get_cidorigem); //TODO usar MAPS
+        destino = findViewById(R.id.get_ciddestino);  //TODO usar MAPS
+        distancia = findViewById(R.id.get_distkm);//TODO calcular com MAPS
 
-        combustivel = findViewById(R.id.spn_combustivel);
+//        combustivel = findViewById(R.id.spn_combustivel);
         valor_litro = findViewById(R.id.get_vallitro);
         autonomia = findViewById(R.id.get_autonomia);
 
         Button calcular = findViewById(R.id.bt_calcular);
         m_ajuda_custo = findViewById(R.id.t_ajuda_custo);
 
-        final Spinner escolheComustivel = (Spinner) findViewById(R.id.spn_combustivel);// Anaçisar ID spn_combustivel....
+        final Spinner escolheComustivel = (Spinner) findViewById(R.id.spn_combustivel);
         ArrayAdapter<CharSequence> vinculo =
                 ArrayAdapter.createFromResource(this, R.array.tipo_combustivel,
                         android.R.layout.simple_spinner_dropdown_item);
@@ -65,7 +66,6 @@ public class Principal extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = escolheComustivel.getSelectedItem().toString();
-
                 switch (item) {
                     case "Gasolina":
                         v_litro = sharedPref.getFloat("val_gasolina", val_gasolina);
@@ -101,12 +101,3 @@ public class Principal extends AppCompatActivity {
             m_ajuda_custo.setText(String.valueOf(ajuda_custo));
         }
     }
-
-    //   public void carregarValoresCombustiveis() {
-    //       gasolina.setText(String.valueOf(sharedPref.getFloat("val_gasolina", val_gasolina)));
-    //       alcool.setText(String.valueOf(sharedPref.getFloat("val_alcool", val_alcool)));
-    //       diesel.setText(String.valueOf(sharedPref.getFloat("val_diesel", val_diesel)));
-    //       gnv.setText(String.valueOf(sharedPref.getFloat("val_gnv", val_gnv)));
-    //}
-}
-
