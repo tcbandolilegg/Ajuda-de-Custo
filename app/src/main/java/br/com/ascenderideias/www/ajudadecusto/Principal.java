@@ -80,6 +80,7 @@ public class Principal extends AppCompatActivity {
                         v_litro = sharedPref.getFloat("val_gnv", val_gnv);
                         break;
                 }
+                valor_litro.setText(String.valueOf(v_litro));
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
