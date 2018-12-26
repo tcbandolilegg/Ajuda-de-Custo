@@ -27,7 +27,7 @@ public class Principal extends AppCompatActivity {
     EditText autonomia;
     float ajuda_custo;
 
-    TextView m_ajuda_custo;
+    EditText m_ajuda_custo;
 
     public SharedPreferences sharedPref;
 
@@ -50,12 +50,11 @@ public class Principal extends AppCompatActivity {
         distancia = findViewById(R.id.get_distkm);
 
         combustivel = findViewById(R.id.spn_combustivel);
-//        valor_litro = findViewById(R.id.get_vallitro);  // TODO  implementar a recuperação do Val_litro
-        System.out.println(combustivel);
+        valor_litro = findViewById(R.id.get_vallitro);
         autonomia = findViewById(R.id.get_autonomia);
 
         Button calcular = findViewById(R.id.bt_calcular);
-        m_ajuda_custo = findViewById(R.id.m_ajuda_custo);
+        m_ajuda_custo = findViewById(R.id.t_ajuda_custo);
 
         final Spinner escolheComustivel = (Spinner) findViewById(R.id.spn_combustivel);// Anaçisar ID spn_combustivel....
         ArrayAdapter<CharSequence> vinculo =
@@ -81,23 +80,13 @@ public class Principal extends AppCompatActivity {
                         v_litro = sharedPref.getFloat("val_gnv", val_gnv);
                         break;
                 }
-
-
-                // valor_litro =
             }
-
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         };
         escolheComustivel.setOnItemSelectedListener(combescolhido);
-
-
-        // TODO       carregarValoresCombustiveis();
-    }
-
+     }
 
     public void onClick(View v) {
         int id = v.getId();

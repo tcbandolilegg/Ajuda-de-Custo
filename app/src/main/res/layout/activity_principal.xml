@@ -139,7 +139,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/m_ajuda_custo"
+            android:id="@+id/t_ajuda_custo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
