@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AjudaDeCusto</string>
+    <string name="origem">Origem</string>
+    <string name="destino">Destino</string>
+    <string name="distancia_em_km">Distancia em Km</string>
+    <string name="tipo_de_combustivel">Tipo de Combustivel</string>
+    <string name="valor_do_litro">Valor do Litro</string>
+    <string name="autonomia_m_dia_km_l">Autonomia Média (Km/L)</string>
+    <string name="calcular">Calcular</string>
+
+    <string-array name="tipo_combustivel">
+        <item>Gasolina</item>
+        <item>Alcool</item>
+        <item>Diesel</item>
+        <item>Gnv</item>
+    </string-array>
+
+</resources>
