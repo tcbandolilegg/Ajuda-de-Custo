@@ -1,6 +1,7 @@
 package br.com.ascenderideias.www.ajudadecusto;
 
 import android.content.Context;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 public class Principal extends AppCompatActivity {
     public final String PREFS_NAME = "CombPrecos";
-    EditText origem;
+    EditText origem = findViewById(R.id.get_cidorigem);
     EditText destino;
     EditText distancia;//
     Spinner combustivel;
@@ -31,7 +32,7 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         setTitle("Ajuda de Custo");
-        origem = findViewById(R.id.get_cidorigem); //TODO usar MAPS
+        //TODO usar MAPS
         destino = findViewById(R.id.get_ciddestino);  //TODO usar MAPS
         distancia = findViewById(R.id.get_distkm);//TODO calcular com MAPS
         valor_litro = findViewById(R.id.get_vallitro);
