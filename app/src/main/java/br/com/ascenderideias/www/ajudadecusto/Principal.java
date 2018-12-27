@@ -14,48 +14,29 @@ import android.content.SharedPreferences;
 
 
 public class Principal extends AppCompatActivity {
+    public final String PREFS_NAME = "CombPrecos";
     EditText origem;
     EditText destino;
     EditText distancia;
     Spinner combustivel;
     EditText valor_litro;
-
-    EditText gasolina;
-    EditText alcool;
-    EditText diesel;
-    EditText gnv;
-
     EditText autonomia;
     float ajuda_custo;
-
     TextView m_ajuda_custo;
-
-    public SharedPreferences sharedPref;
-
-    public float val_gasolina;
-    public float val_alcool;
-    public float val_diesel;
-    public float val_gnv;
     public float v_litro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-
         setTitle("Ajuda de Custo");
-        sharedPref = getPreferences(MODE_PRIVATE);
-
         origem = findViewById(R.id.get_cidorigem); //TODO usar MAPS
         destino = findViewById(R.id.get_ciddestino);  //TODO usar MAPS
         distancia = findViewById(R.id.get_distkm);//TODO calcular com MAPS
-
-//        combustivel = findViewById(R.id.spn_combustivel);
         valor_litro = findViewById(R.id.get_vallitro);
         autonomia = findViewById(R.id.get_autonomia);
-
-        Button calcular = findViewById(R.id.bt_calcular);
         m_ajuda_custo = findViewById(R.id.t_ajuda_custo);
+        Button calcular = findViewById(R.id.bt_calcular);
 
         final Spinner escolheComustivel = (Spinner) findViewById(R.id.spn_combustivel);
         ArrayAdapter<CharSequence> vinculo =
@@ -66,38 +47,47 @@ public class Principal extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = escolheComustivel.getSelectedItem().toString();
+                SharedPreferences sharedPref;
+                sharedPref = getSharedPreferences(PREFS_NAME,0);
+
                 switch (item) {
                     case "Gasolina":
-                        v_litro = sharedPref.getFloat("val_gasolina", val_gasolina);
+                        v_litro = sharedPref.getFloat("val_gasolina",0.1f);
                         break;
                     case "Alcool":
-                        v_litro = sharedPref.getFloat("val_alcool", val_alcool);
+                        v_litro = sharedPref.getFloat("val_alcool", 0.0f);
                         break;
                     case "Diesel":
-                        v_litro = sharedPref.getFloat("val_diesel", val_diesel);
+                        v_litro = sharedPref.getFloat("val_diesel", 0.0f);
                         break;
                     case "GNV":
-                        v_litro = sharedPref.getFloat("val_gnv", val_gnv);
+                        v_litro = sharedPref.getFloat("val_gnv", 0.0f);
                         break;
+                    default:
+                        v_litro = 0;
+                        break;
+                }
+                if (v_litro == 0.0) {
+                    //TODO " não exite valor cadastrado para este combustivel.";
                 }
                 valor_litro.setText(String.valueOf(v_litro));
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
         escolheComustivel.setOnItemSelectedListener(combescolhido);
-     }
+    }
 
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.bt_calcular) {
-            float v1, v2, v3;
+            float v1, v2;
             v1 = Float.parseFloat(distancia.getText().toString());
             v2 = Float.parseFloat(autonomia.getText().toString());
-//            v3 = Float.parseFloat(valor_litro.getText().toString());
-            v3 = v_litro;
-            ajuda_custo = 2*(v1 / v2) * v3;
+            ajuda_custo = 2 * (v1 / v2) * v_litro;
             m_ajuda_custo.setText(String.valueOf(ajuda_custo));
         }
     }
+}

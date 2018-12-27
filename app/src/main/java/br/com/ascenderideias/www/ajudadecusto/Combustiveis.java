@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+
 public class Combustiveis extends AppCompatActivity implements View.OnClickListener {
     EditText gasolina;
     EditText alcool;
@@ -22,16 +23,17 @@ public class Combustiveis extends AppCompatActivity implements View.OnClickListe
     public float val_diesel;
     public float val_gnv;
 
+    public final String PREFS_NAME = "CombPrecos";
     public SharedPreferences sharedPref;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combustiveis);
         setTitle("Precificação de Combustíveis");
+        //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        sharedPref = getSharedPreferences(PREFS_NAME,this.MODE_PRIVATE);
 
-        sharedPref = getPreferences(this.MODE_PRIVATE);
         editmod = false;
         gasolina = findViewById(R.id.getGasolina);
         alcool = findViewById(R.id.getAlcool);
@@ -67,7 +69,7 @@ public class Combustiveis extends AppCompatActivity implements View.OnClickListe
 
     public void salvarValoresCombustiveis() {
 
-        SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences.Editor editor = sharedPref.edit();//TODO ver  sobreescrever ???
         val_gasolina = Float.parseFloat(gasolina.getText().toString());
         val_alcool = Float.parseFloat(alcool.getText().toString());
         val_diesel = Float.parseFloat(diesel.getText().toString());

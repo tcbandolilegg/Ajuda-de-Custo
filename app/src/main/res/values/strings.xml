@@ -9,6 +9,7 @@
     <string name="calcular">Calcular</string>
 
     <string-array name="tipo_combustivel">
+        <item>Escolha um Combustível</item>
         <item>Gasolina</item>
         <item>Alcool</item>
         <item>Diesel</item>

@@ -51,7 +51,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName|numberDecimal"
+            android:selectAllOnFocus="true" />
 
         <TextView
             android:id="@+id/textView6"
@@ -68,7 +69,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName|numberDecimal"
+            android:selectAllOnFocus="true" />
 
         <TextView
             android:id="@+id/textView2"
@@ -85,7 +87,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName|numberDecimal"
+            android:selectAllOnFocus="true" />
 
         <TextView
             android:id="@+id/textView"
@@ -102,7 +105,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName|numberDecimal"
+            android:selectAllOnFocus="true" />
 
         <LinearLayout
             android:id="@+id/View_bt"
