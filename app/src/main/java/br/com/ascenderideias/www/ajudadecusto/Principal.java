@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.widget.Toast;
-
+//TODO
 
 public class Principal extends AppCompatActivity {
     public final String PREFS_NAME = "CombPrecos";
@@ -28,7 +28,6 @@ public class Principal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //TODO COMO DESABILITAR O VOLTAR PARA ACTIVITY ANTERIOR? COMBUSTIVEIS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         setTitle("Ajuda de Custo");
@@ -39,11 +38,13 @@ public class Principal extends AppCompatActivity {
         autonomia = findViewById(R.id.get_autonomia);
         m_ajuda_custo = findViewById(R.id.get_ajudacusto);
 
-        // Capture our button from layout
-        Button calcular = (Button) findViewById(R.id.bt_calcular);
+
+        Button ida = (Button) findViewById(R.id.bt_ida);
+        Button idaevolta = (Button) findViewById(R.id.bt_idaevolta);
         Button sair = (Button) findViewById(R.id.bt_sair);
-        // Register the onClick listener with the implementation above
-        calcular.setOnClickListener(meusBotoes);
+
+        ida.setOnClickListener(meusBotoes);
+        idaevolta.setOnClickListener(meusBotoes);
         sair.setOnClickListener(meusBotoes);
 
 
@@ -69,7 +70,7 @@ public class Principal extends AppCompatActivity {
                     case "Diesel":
                         v_litro = sharedPref.getFloat("val_diesel", 0.0f);
                         break;
-                    case "GNV":
+                    case "Gnv":
                         v_litro = sharedPref.getFloat("val_gnv", 0.0f);
                         break;
                     default:
@@ -86,26 +87,29 @@ public class Principal extends AppCompatActivity {
         escolheComustivel.setOnItemSelectedListener(combescolhido);
     }
 
-    // Create an anonymous implementation of OnClickListener
+
     private View.OnClickListener meusBotoes = new View.OnClickListener() {
         public void onClick(View v) {
-            // do something when the button is clicked
-            // Yes we will handle click here but which button clicked??? We don't know
-
-            // So we will make
-            switch (v.getId() /*to get clicked view id**/) {
-                case R.id.bt_calcular:
-                    Toast.makeText(getBaseContext(), "Calculando", Toast.LENGTH_LONG).show();
-                    float v1, v2;
+            float v1, v2;
+            switch (v.getId()) {
+                case R.id.bt_ida:
+                    Toast.makeText(getBaseContext(), "Calculando", Toast.LENGTH_SHORT).show();
+                    v1 = Float.parseFloat(distancia.getText().toString());
+                    v2 = Float.parseFloat(autonomia.getText().toString());
+                    ajuda_custo = (v1 / v2) * v_litro;
+                    m_ajuda_custo.setText(String.valueOf(ajuda_custo));
+                    break;
+                case R.id.bt_idaevolta:
+                    Toast.makeText(getBaseContext(), "Calculando", Toast.LENGTH_SHORT).show();
                     v1 = Float.parseFloat(distancia.getText().toString());
                     v2 = Float.parseFloat(autonomia.getText().toString());
                     ajuda_custo = 2 * (v1 / v2) * v_litro;
                     m_ajuda_custo.setText(String.valueOf(ajuda_custo));
                     break;
+
                 case R.id.bt_sair:
                     finish();
                     break;
-
                 default:
                     break;
             }

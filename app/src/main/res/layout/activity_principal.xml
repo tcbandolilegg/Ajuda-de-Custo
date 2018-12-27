@@ -127,14 +127,30 @@
             android:selectAllOnFocus="true"
             tools:ignore="Autofill,LabelFor" />
 
-        <Button
-            android:id="@+id/bt_calcular"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calcular"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_ida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ida ou volta"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_idaevolta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ida e Volta"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView4"
@@ -143,7 +159,8 @@
             android:text="Total para a Ajuda de Custo"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <EditText
             android:id="@+id/get_ajudacusto"

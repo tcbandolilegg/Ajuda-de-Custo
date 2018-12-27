@@ -51,7 +51,6 @@ public class Combustiveis extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View v) {
-        int id = v.getId();
         switch (v.getId() /*qual foi o Id do botão clicado**/) {
             case R.id.bt_atualiza:
                 gasolina.setEnabled(true);
@@ -64,24 +63,21 @@ public class Combustiveis extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_prossegue:
                 if (editmod) {
                     salvarValoresCombustiveis();
-                    if (val_gasolina == 0 || val_alcool == 0 || val_diesel == 0 || val_gnv == 0) { //TODO adicionei para não gravar zerado
-                        Toast.makeText(getBaseContext(), "Valor Combustivel não pode ficar zerado", Toast.LENGTH_LONG).show();//TODO adicionei para não gravar zerado
-
-                    } else {//TODO adicionei para não gravar zerado
-                        continua = true;//TODO adicionei para não gravar zerado
-                    }//TODO adicionei para não gravar zerado
-
+                    if (val_gasolina == 0 || val_alcool == 0 || val_diesel == 0 || val_gnv == 0) {
+                        Toast.makeText(getBaseContext(), "Valor Combustivel não pode ficar zerado", Toast.LENGTH_LONG).show();
+                    } else {
+                        continua = true;
+                    }
                 }
-                if (continua) {//TODO adicionei para não gravar zerado
+                if (continua) {
                     startActivity(new Intent(getBaseContext(), Principal.class));
-                }//TODO adicionei para não gravar zerado
-//            finish();
+                    finish();
+                }
+
                 break;
             default:
                 break;
         }
-
-
     }
 
     public void salvarValoresCombustiveis() {
@@ -97,7 +93,6 @@ public class Combustiveis extends AppCompatActivity implements View.OnClickListe
         editor.putFloat("val_alcool", val_alcool);
         editor.putFloat("val_diesel", val_diesel);
         editor.putFloat("val_gnv", val_gnv);
-// TODO VALOR NÃO PODEM SER  IGUAL  A ZERO
         editor.apply();
     }
 
